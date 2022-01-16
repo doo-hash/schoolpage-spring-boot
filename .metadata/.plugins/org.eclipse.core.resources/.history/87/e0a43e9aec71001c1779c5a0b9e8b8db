@@ -1,0 +1,26 @@
+package com.mockpage.schoolwebapp.parentportal.parent;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class ParentPortalApplication {
+
+	private static final Logger log = LoggerFactory.getLogger(ParentPortalApplication.class);
+
+	
+	public static void main(String[] args) {
+		SpringApplication.run(ParentPortalApplication.class, args);
+		displaybeans();
+		}
+	public static void displaybeans() {
+		ApplicationContext applicationContext = SpringApplication.run(ParentPortalApplication.class, args);
+		String[] beans = applicationContext.getBeanDefinitionNames();
+		for(String beanname : beans)
+			System.out.println(beanname);
+	}
+}
+

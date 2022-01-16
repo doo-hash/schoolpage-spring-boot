@@ -1,0 +1,5 @@
+package com.mockpage.schoolwebapp.adminportal.admin.security;
+
+public class MvcConfig {
+
+}

@@ -1,0 +1,66 @@
+package com.mockpage.schoolwebapp.teacherportal.teacher.controller;
+
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.mockpage.schoolwebapp.teacherportal.teacher.model.Teacher;
+
+@FeignClient("teacher-portal-client-service")
+public interface TeacherPortalService {
+
+	@GetMapping("/teacher")
+	public String teacherForm(Model model);
+		
+	@PostMapping("/add_teacher")
+	public String teacherSubmit(
+			@Valid @ModelAttribute("teacher") Teacher teacher,
+			BindingResult result, 
+			Model model);
+	
+	@GetMapping("/login")
+	public String teacherLogin();
+
+	@GetMapping("/teacher_logout")
+	public String teacherLogout();
+	
+	@PostMapping("/auth_teacher")
+	public String teacherLogin(Model model,
+			@Valid @RequestParam String username, 
+			@Valid @RequestParam String password);
+	
+	@GetMapping("/teacher_portal/{id}")
+	public String teacherPortal(@PathVariable String id, Model model);
+	
+	@GetMapping("/{teacherId}/profile")
+	public String teacherProfile(@PathVariable String teacherId,Model model);
+
+	@GetMapping("/{teacherId}/notifications")
+	public String teacherNotifications(@PathVariable String teacherId,Model model);
+
+	@GetMapping("/{teacherId}/settings")
+	public String teacherSettings(@PathVariable String teacherId,Model model);
+	
+	@GetMapping("/{teacherId}/edit")
+	public String editteacher(@PathVariable String teacherId,
+			Model model);
+	
+	@PostMapping("/update_teacher/{id}")
+	public String teacherUpdate(@PathVariable String id,
+			@Valid @ModelAttribute("teacher") Teacher teacher,
+			BindingResult result,
+			Model model);
+
+	@GetMapping("/{teacherId}/remove")
+	public String deleteteacher(@PathVariable String teacherId, Model model);
+
+}

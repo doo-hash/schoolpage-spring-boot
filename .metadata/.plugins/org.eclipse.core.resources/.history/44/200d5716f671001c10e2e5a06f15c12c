@@ -1,0 +1,99 @@
+package com.mockpage.schoolwebapp.adminportal.admin.controller;
+
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.mockpage.schoolwebapp.adminportal.admin.model.Admin;
+import com.mockpage.schoolwebapp.adminportal.admin.service.AdminServiceImpl;
+
+@Controller
+public class AdminController {
+
+	@Autowired
+	AdminServiceImpl adminservice;
+	
+	@GetMapping("/")
+	public String adminForm(Model model) {
+		model.addAttribute("admin",new Admin());		
+		return "admin_form";
+	}
+		
+	@PostMapping("/admin")
+	public String adminSubmit(
+			@Valid @ModelAttribute("admin") Admin admin,
+			BindingResult result, 
+			Model model) {
+		if(result.hasErrors()) {
+			return "admin_form";
+		}		
+		/*
+		 * if(confirm_password.contentEquals(admin.get().getPassword())) {
+		 * System.out.println(confirm_password); }
+		 * model.addAttribute("psdmsg","password must be same");
+		 */
+		model.addAttribute("admin",admin);
+		adminservice.save(admin);
+
+		return "admin_portal";
+	}
+	
+	@GetMapping("/login")
+	public String adminLogin(Model model) {
+		model.addAttribute("admin", new Admin());
+		return "login";
+	}
+	
+	@PostMapping("/admin_portal")
+	public String adminLogin(
+			@Valid @RequestParam String adminId, 
+			@Valid @RequestParam String password, 
+			BindingResult result, 
+			Model model) {		
+		if(adminservice.existsByadminId(adminId)) {
+			Optional<Admin> admin =	adminservice.findByadminId(adminId);
+			if(password.equals(admin.get().getPassword())) {
+				model.addAttribute(admin.get());
+				return "admin_portal";
+			}
+			else {
+				model.addAttribute("errormsg","password is wrong");
+				return "Login";
+			}
+		}
+		else {
+			model.addAttribute("usererr", "Admin does not exist.");
+			return "Login";
+		}
+	}
+	
+	@PutMapping("/admin/edit")
+	public String editadmin(
+			Model model, 
+			@Valid @RequestParam String adminId) {
+		Optional<Admin> admin = adminservice.findByadminId(adminId);
+		model.addAttribute("admin",admin.get());
+		return "admin_form";
+	}
+	
+	@DeleteMapping("/admin/remove")
+	public String deleteadmin(
+			Model model, 
+			@Valid @RequestParam String adminId) {
+		Optional<Admin> admin = adminservice.findByadminId(adminId);
+		adminservice.delete(admin);
+		model.addAttribute("message","Sign Up to know more.");
+		return "admin_form";
+	}
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="D:\spring_examples\Basics\school_website\schoolpageservice"/>
+			<item value="C:\Users\admin\Downloads\demo"/>
+			<item value="D:\spring_examples\Basics\school_website\parent-portal"/>
+			<item value="D:\spring_examples\Basics\BasicSpringAppln"/>
+			<item value="D:\spring_examples\Basics\first-web-app"/>
+			<item value="D:\spring_examples\Basics\mockito-demo"/>
+			<item value="C:\Users\admin\Downloads\signup and signin forms"/>
+			<item value="D:\github-spring\git"/>
+			<item value="D:\spring_examples\Basics\parent-portal"/>
+			<item value="D:\spring_examples\Basics\school_website"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

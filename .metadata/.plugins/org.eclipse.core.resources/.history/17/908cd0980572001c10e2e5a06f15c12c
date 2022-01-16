@@ -1,0 +1,35 @@
+<!-- <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'Welcome'+${parent.firstName}"></title>
+</head>
+<body>
+<h1 class="p-5 m-5" th:text="${parent.firstName}+${parent.lastName}+'Profile'"></h1>
+<div class="border m-5 p-2">
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Full Name</th>
+<th>Student Name</th>
+<th>Student Id</th>
+<th>Email</th>
+<th>Password</th>
+</tr>
+<tr>
+<td th:text="${parent.id}"></td>
+<td th:text="${parent.firstName}+${parent.lastName}"></td>
+<td th:text="${parent.studentName}"></td>
+<td th:text="${parent.studentId}"></td>
+<td th:text="${parent.email}"></td>
+<td th:text="${parent.password}"></td>
+</tr>
+</thead>
+</table>
+</div>
+<a href="/parent/add">Register here!</a>
+</body>
+</html> -->

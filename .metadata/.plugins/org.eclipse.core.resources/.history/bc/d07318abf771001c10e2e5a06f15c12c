@@ -1,0 +1,21 @@
+package com.mockpage.schoolwebapp.parentportal.parent.services;
+
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.mockpage.schoolwebapp.parentportal.parent.model.Parent;
+
+
+@Service
+public interface ParentService {
+
+	public boolean existsById(Long id);
+	public Optional<Parent> findById(Long id);
+	public Optional<Parent> findByParentId(String ParentId);
+	public boolean existsByParentId(String ParentId);
+	public void deleteById(Long id);
+	public void delete(Optional<Parent> Parent);
+	void save(Parent Parent);
+
+	}

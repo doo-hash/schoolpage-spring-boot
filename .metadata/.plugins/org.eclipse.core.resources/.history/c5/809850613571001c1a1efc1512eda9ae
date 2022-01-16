@@ -1,0 +1,12 @@
+package com.mockpage.schoolwebapp.adminportal.admin.service;
+
+import java.util.Optional;
+
+import com.mockpage.schoolwebapp.adminportal.admin.model.Admin;
+
+public interface AdminService {
+
+	public boolean existsById(Long id);
+	public Optional<Admin> findById(Long id);
+	public boolean existsByadminId(String adminId);
+}

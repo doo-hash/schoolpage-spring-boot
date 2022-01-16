@@ -1,0 +1,57 @@
+package com.mockpage.schoolwebapp.teacherportal.teacher.service;
+
+import java.util.Optional;
+
+import org.springframework.stereotype.Component;
+
+import com.mockpage.schoolwebapp.teacherportal.teacher.repository.TeacherRepository;
+
+@Component
+public class TeacherServiceImpl implements TeacherService {
+	
+	private final TeacherRepository teacherRepo;
+
+	public ServiceImpl(TeacherRepository TeacherRepo) {
+		this.TeacherRepo = TeacherRepo;
+	}
+	@Override
+	public boolean existsById(Long id) {
+
+		boolean isPresent = TeacherRepo.existsById(id);
+		return isPresent;
+	}
+
+	@Override
+	public Optional<Teacher> findById(Long id) {
+		Optional<Teacher> Teacher = TeacherRepo.findById(id);
+		return Teacher;
+	}
+
+	@Override
+	public boolean existsByTeacherId(String TeacherId) {
+		boolean isTeacher = TeacherRepo.existsByTeacherId(TeacherId);
+		return isTeacher;
+	}
+
+	@Override
+	public void save(Teacher Teacher) {
+		TeacherRepo.save(Teacher);
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		TeacherRepo.deleteById(id);
+	}
+
+	@Override
+	public Optional<Teacher> findByTeacherId(String TeacherId) {
+		Optional<Teacher> Teacher = TeacherRepo.findByTeacherId(TeacherId);
+		return Teacher;
+	}
+
+	@Override
+	public void delete(Optional<Teacher> teacher) {
+		teacherRepo.delete(teacher.get());		
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.mockpage.schoolwebapp.teacherportal.teacher.controller;
+
+public class TeacherController {
+
+}

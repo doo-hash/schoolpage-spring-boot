@@ -1,0 +1,115 @@
+package com.mockpage.schoolwebapp.teacherportal.teacher.controller;
+
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.mockpage.schoolwebapp.teacherportal.teacher.model.Teacher;
+import com.mockpage.schoolwebapp.teacherportal.teacher.service.TeacherService;
+
+@Controller
+public class TeacherController {
+	
+	@Autowired
+	private TeacherService teacherservice;
+	
+	@GetMapping({"/","/teacher"})
+	public String teacherForm(Model model) {
+		model.addAttribute("teacher",new Teacher());		
+		return "teacher_form";
+	}
+		
+	@PostMapping("/teacher")
+	public String teacherSubmit(
+			@Valid @ModelAttribute("teacher") Teacher teacher,
+			BindingResult result, 
+			Model model) {
+		if(result.hasErrors()) {
+			return "teacher_form";
+		}		
+		model.addAttribute("teacher",teacher);
+		teacherservice.save(teacher);
+
+		return "teacher_portal";
+	}
+	
+	@GetMapping("/login")
+	public String teacherLogin(Model model) {
+		model.addAttribute("teacher", new Teacher());
+		return "login";
+	}
+	
+	@PostMapping("/login")
+	public String teacherLogin(
+			@Valid @RequestParam String userId, 
+			@Valid @RequestParam String password, 
+			BindingResult result, 
+			Model model) {		
+		if(teacherservice.existsByteacherId(userId)) {
+			Optional<Teacher> teacher =	teacherservice.findByteacherId(userId);
+			if(password.equals(teacher.get().getPassword())) {
+				model.addAttribute(teacher.get());
+				return "teacher_portal";
+			}
+			else {
+				model.addAttribute("errormsg","password is wrong");
+				return "login";
+			}
+		}
+		else {
+			model.addAttribute("usererr", "This account does not exist.");
+			return "login";
+		}
+	}
+	
+	@GetMapping("/{teacherId}/profile")
+	public String teacherProfile(@PathVariable String teacherId,Model model) {
+		Optional<Teacher> teacher = teacherservice.findByteacherId(teacherId);
+		model.addAttribute("teacher", teacher.get());
+		return "profile";
+	}
+
+	@GetMapping("/{teacherId}/notifications")
+	public String teacherNotifications(@PathVariable String teacherId,Model model) {
+		Optional<Teacher> teacher = teacherservice.findByteacherId(teacherId);
+		model.addAttribute("teacher", teacher.get());
+		return "notifications";
+	}
+
+	@GetMapping("/{teacherId}/settings")
+	public String teacherSettings(@PathVariable String teacherId,Model model) {
+		Optional<Teacher> teacher = teacherservice.findByteacherId(teacherId);
+		model.addAttribute("teacher", teacher.get());
+		return "settings";
+	}
+
+	@PutMapping("/{teacherId}/edit")
+	public String editteacher(@PathVariable String teacherId,
+			Model model) {
+		Optional<Teacher> teacher = teacherservice.findByteacherId(teacherId);
+		model.addAttribute("teacher",teacher.get());
+		return "teacher_form";
+	}
+	
+	@DeleteMapping("/{teacherId}/remove")
+	public String deleteteacher(@PathVariable String teacherId,
+			Model model) {
+		Optional<Teacher> teacher = teacherservice.findByteacherId(teacherId);
+		teacherservice.delete(teacher);
+		model.addAttribute("message","Sign Up to know more.");
+		return "teacher_form";
+	}
+
+}

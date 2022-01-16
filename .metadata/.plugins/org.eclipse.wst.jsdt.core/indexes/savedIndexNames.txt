@@ -1,0 +1,1 @@
+INDEX VERSION 1.4+D:\spring_examples\Basics\school_website\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes

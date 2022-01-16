@@ -1,0 +1,15 @@
+package com.mockpage.schoolwebapp.adminportal.admin.repository;
+
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.mockpage.schoolwebapp.parentportal.parent.model.Parent;
+
+public interface AdminRepository extends CrudRepository<Admin,Long>{
+
+	public Optional<Admin> findById(Long id);
+	
+}

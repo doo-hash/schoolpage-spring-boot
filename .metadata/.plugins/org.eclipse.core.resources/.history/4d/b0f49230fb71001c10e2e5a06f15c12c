@@ -1,0 +1,5 @@
+package com.mockpage.schoolwebapp.teacherportal.teacher.repository;
+
+public class TeacherRepository {
+
+}
