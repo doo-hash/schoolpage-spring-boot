@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;ParentController.java&apos; to &apos;schoolpage&apos;&#x0D;&#x0A;- Original project: &apos;parent-portal&apos;&#x0D;&#x0A;- Destination element: &apos;schoolpage&apos;&#x0D;&#x0A;- Original element: &apos;com.mockpage.schoolwebapp.parentportal.parent.controller.ParentController.java&apos;" description="Copy compilation unit" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.mockpage.schoolwebapp.parentportal.parent.controller{ParentController.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1641211689348" target="/schoolpage" units="1" version="1.0"/>
-</session>

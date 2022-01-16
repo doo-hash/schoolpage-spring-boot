@@ -1,5 +1,0 @@
-package com.mockpage.schoolwebapp.adminportal.admin.controller;
-
-public class ErrorHandlerController {
-
-}
