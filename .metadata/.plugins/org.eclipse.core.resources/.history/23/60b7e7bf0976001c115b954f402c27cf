@@ -1,8 +1,0 @@
-package com.mockpage.schoolwebapp.teacherportal.teacher.controller;
-
-import org.springframework.cloud.openfeign.FeignClient;
-
-@FeignClient("teacher-portal-client-service")
-public interface TeacherPortalService {
-
-}

@@ -1,5 +1,0 @@
-package com.mockpage.schoolwebapp.parentportal.parent.controller;
-
-public interface ParentPortalController {
-
-}

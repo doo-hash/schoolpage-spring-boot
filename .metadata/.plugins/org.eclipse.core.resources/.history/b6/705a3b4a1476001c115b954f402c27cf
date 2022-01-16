@@ -1,8 +1,0 @@
-package com.mockpage.schoolwebapp.parentportal.parent.controller;
-
-import org.springframework.cloud.openfeign.FeignClient;
-
-@FeignClient("parent-portal-client-service")
-public interface ParentPortalController {
-
-}

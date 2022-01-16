@@ -1,5 +1,0 @@
-package com.mockpage.schoolwebapp.adminportal.admin.service;
-
-public class AdminServiceImpl implements AdminService{
-
-}

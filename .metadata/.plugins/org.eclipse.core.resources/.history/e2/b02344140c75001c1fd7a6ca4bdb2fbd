@@ -1,5 +1,0 @@
-package com.mockpage.schoolwebapp.adminportal.admin.websecurity;
-
-public class AdminSecurityConfig {
-
-}
