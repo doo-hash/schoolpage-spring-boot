@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 
 import com.mockpage.schoolwebapp.schoolpage.home.model.Admissions;
@@ -15,6 +16,7 @@ import com.mockpage.schoolwebapp.schoolpage.home.repository.AdmissionsRepository
 import com.mockpage.schoolwebapp.schoolpage.home.repository.CoursesRepository;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class SchoolpageApplication {
 	
 	private static final org.slf4j.Logger log = LoggerFactory.getLogger(SchoolpageApplication.class);
